@@ -1,6 +1,7 @@
 # GamesPlusPlus2015
 Game for the games++ game creation day at Stevens Institute of Technology, 2015
-[Link to the game](joshgrib.github.io/gpp2015)
+
+[Link to the game](http://joshgrib.github.io/gpp2015)
 
 ###Team
 * Josh Gribbon @joshgrib

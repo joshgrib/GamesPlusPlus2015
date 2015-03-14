@@ -11,7 +11,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.src = "images/background.png";
+bgImage.src = "http://upload.wikimedia.org/wikipedia/commons/b/b5/Te_Pureora_forest_1.jpg";
 
 // Hero image
 var heroReady = false;

@@ -64,3 +64,30 @@ var reset = function () {
     monster.y = 32 + (Math.random() * (canvas.height - 64));
 };
 
+//Update game objects to create movement
+var update = function (modifier) {
+    //worth noting (0,0) in the canvas is the top left corner
+    if (38 in keysDown) { //move hero up
+        hero.y -= hero.speed * modifier;
+    }
+    if (40 in keysDown) { //move hero down
+        hero.y += hero.speed * modifier;
+    }
+    if (37 in keysDown) { //move hero left
+        hero.x -= hero.speed * modifier;
+    }
+    if (38 in keysDown) { //move hero right
+        hero.x += hero.speed * modifier;
+    }
+    
+    //Are the hero and monster touching? If so reset
+    if (
+        hero.x <= (monster.x + 32) &&
+        monster.x <= (hero.x + 32) &&
+        hero.y <= (monster.x + 32) &&
+        monster.y <= (hero.x + 32)
+        ) {
+          ++monstersCaught;
+          reset();
+        }
+};

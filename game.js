@@ -13,7 +13,7 @@ var bgImage = new Image();
 bgImage.onload = function() {
     bgReady = true;
 };
-bgImage.src = "http://upload.wikimedia.org/wikipedia/commons/b/b5/Te_Pureora_forest_1.jpg";
+bgImage.src = "https://github.com/lostdecade/simple_canvas_game/blob/master/images/background.png";
 
 //Hero image
 var heroReady = false;

@@ -1,11 +1,7 @@
 # GamesPlusPlus2015
-Game for the games++ game creation day at Stevens Institute of Technology, 2015
+Game for the games++ game creation day at Stevens Institute of Technology, 2015. This is a 12-hour coding event. I decided to learn javascript and canvas for HTML5 to create my game.
 
 [Link to the game](http://joshgrib.github.io/gpp2015)
-
-###Team
-* Josh Gribbon @joshgrib
-* Jonathan Schwarz @[USERNAME]
 
 ###Game theme(*provided by the event*): [THEME]
 

@@ -11,7 +11,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.src = "http://upload.wikimedia.org/wikipedia/commons/b/b5/Te_Pureora_forest_1.jpg";
+bgImage.src = "images/background.png";
 
 // Hero image
 var heroReady = false;
@@ -31,9 +31,11 @@ monsterImage.src = "images/monster.png";
 
 // Game objects
 var hero = {
-	speed: 256 // movement in pixels per second
+	speed: 400 // movement in pixels per second
 };
-var monster = {};
+var monster = {
+	speed: 50
+};
 var monstersCaught = 0;
 
 // Handle keyboard controls
@@ -47,31 +49,97 @@ addEventListener("keyup", function (e) {
 	delete keysDown[e.keyCode];
 }, false);
 
+var i = 0;
+
 // Reset the game when the player catches a monster
 var reset = function () {
-	hero.x = canvas.width / 2;
-	hero.y = canvas.height / 2;
+	
+	if (i == 0){
+		hero.x = canvas.width / 2;
+		hero.y = canvas.height / 2;
+		i = 1;
+	} else {
+		hero.x = monster.x;
+		hero.y = monster.y;
+	}
 
-	// Throw the monster somewhere on the screen randomly
+	// Place the monster somewhere on the screen randomly
 	monster.x = 32 + (Math.random() * (canvas.width - 64));
 	monster.y = 32 + (Math.random() * (canvas.height - 64));
 };
 
 // Update game objects
 var update = function (modifier) {
+	//stop hero from leaving the box
+	if (hero.x >= 448) {
+		hero.x = 448;
+	}
+	if (hero.y >= 416) {
+		hero.y = 416;
+	}
+	if (hero.x <= 32) {
+		hero.x = 32;
+	}
+	if (hero.y <= 32) {
+		hero.y = 32;
+	}
+	
+	//stop monster from leaving the box
+	if (monster.x >= 448) {
+		monster.x = 448;
+	}
+	if (monster.y >= 416) {
+		monster.y = 416;
+	}
+	if (monster.x <= 32) {
+		monster.x = 32;
+	}
+	if (monster.y <= 32) {
+		monster.y = 32;
+	}
+	
+	//direction controls
 	if (38 in keysDown) { // Player holding up
-		hero.y -= hero.speed * modifier;
+		hero.y -= 2 * hero.speed * modifier;
 	}
 	if (40 in keysDown) { // Player holding down
-		hero.y += hero.speed * modifier;
+		hero.y += 2 * hero.speed * modifier;
 	}
 	if (37 in keysDown) { // Player holding left
-		hero.x -= hero.speed * modifier;
+		hero.x -= 2 * hero.speed * modifier;
 	}
 	if (39 in keysDown) { // Player holding right
+		hero.x += 2 * hero.speed * modifier;
+	}
+	
+	//Have monster evade hero
+	if ((hero.x - monster.x) <= 0) {
+		monster.x += monster.speed * modifier;
+	}
+	if ((hero.x - monster.x) > 0) {
+		monster.x -= monster.speed * modifier;
+	}
+	if ((hero.y - monster.y) <= 0) {
+		monster.y += monster.speed * modifier;
+	}
+	if ((hero.y - monster.y) > 0) {
+		monster.y -= monster.speed * modifier;
+	}
+	
+	//Have hero chase monster (autonomous mode)
+	if ((hero.x - monster.x) <= 0) {
 		hero.x += hero.speed * modifier;
 	}
-
+	if ((hero.x - monster.x) > 0) {
+		hero.x -= hero.speed * modifier;
+	}
+	if ((hero.y - monster.y) <= 0) {
+		hero.y += hero.speed * modifier;
+	}
+	if ((hero.y - monster.y) > 0) {
+		hero.y -= hero.speed * modifier;
+	}
+	
 	// Are they touching?
 	if (
 		hero.x <= (monster.x + 32)
@@ -82,6 +150,7 @@ var update = function (modifier) {
 		++monstersCaught;
 		reset();
 	}
+	
 };
 
 // Draw everything
@@ -97,13 +166,19 @@ var render = function () {
 	if (monsterReady) {
 		ctx.drawImage(monsterImage, monster.x, monster.y);
 	}
-
+	var timer = Date();
+	var time = 60000 - (Date() - time);
+	
+	var d = new Date();
+	d.setSeconds(60);
+	var n = d.getSeconds();
+	
 	// Score
 	ctx.fillStyle = "rgb(250, 250, 250)";
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
+	ctx.fillText("Monsters captured: " + monstersCaught + "   Time:" + n, 32, 4);
 };
 
 // The main game loop
@@ -115,6 +190,7 @@ var main = function () {
 	render();
 
 	then = now;
+	
 
 	// Request to do this again ASAP
 	requestAnimationFrame(main);
@@ -124,7 +200,7 @@ var main = function () {
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
-// Let's play this game!
+// Lets play this game!
 var then = Date.now();
 reset();
 main();

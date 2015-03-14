@@ -2,10 +2,10 @@
 Game for the games++ game creation day at Stevens Institute of Technology, 2015
 
 ###Team
-  Josh Gribbon @joshgrib
-  Jonathan Schwarz @[USERNAME]
+* Josh Gribbon @joshgrib
+* Jonathan Schwarz @[USERNAME]
 
-###Game theme(provided by the event): [THEME]
+###Game theme(*provided by the event*): [THEME]
 
 ###Game idea: [IDEA]
 

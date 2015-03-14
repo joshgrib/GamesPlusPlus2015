@@ -3,3 +3,9 @@ body{
     text-align:center;
     width:100%;
 }
+#game{
+    border:1px solid blue;
+}
+h3{
+    margin:0px;
+}

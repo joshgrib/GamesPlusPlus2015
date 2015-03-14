@@ -13,7 +13,7 @@ var bgImage = new Image();
 bgImage.onload = function() {
     bgReady = true;
 };
-bgImage.src = "";
+bgImage.src = "http://upload.wikimedia.org/wikipedia/commons/b/b5/Te_Pureora_forest_1.jpg";
 
 //Hero image
 var heroReady = false;
@@ -21,7 +21,7 @@ var heroImage = new Image();
 heroImage.onload = function() {
     heroReady = true;
 };
-heroImage.src = "";
+heroImage.src = "https://gp6.googleusercontent.com/-mEyL34SDfqY/AAAAAAAAAAI/AAAAAAAAAAA/RH3B9RN0W6U/s48-c-k-no/photo.jpg";
 
 //Monster image
 var monsterReady = false;
@@ -29,7 +29,7 @@ var monsterImage = new Image();
 monsterImage.onload = function() {
     monsterReady = true;
 };
-monsterImage.src = "";
+monsterImage.src = "https://gp5.googleusercontent.com/-DyGav9oI6LY/AAAAAAAAAAI/AAAAAAAAAAA/pt38gwfDxVE/s48-c-k-no/photo.jpg";
 
 //Game objects
 var hero = {

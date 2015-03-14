@@ -1,11 +1,11 @@
-/* shouldn't be needed because I do it in HTML
+//shouldn't be needed because I do it in HTML
 //Create the canvas
 var canvas = document.createElement("canvas"); //create the canvas
 var ctx = canvas.getContext("2d"); //used to issue drawing commands
 canvas.width = 1024; //set width
 canvas.height = 768; //set height
 document.body.appendChild(canvas); //add it to the document
-*/
+
 
 //Background image
 var bgReady = false; //waits for the image to load before drawing it to avoid DOM errors

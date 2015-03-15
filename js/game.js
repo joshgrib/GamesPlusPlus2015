@@ -31,10 +31,10 @@ monsterImage.src = "images/monster.png";
 
 // Game objects
 var hero = {
-	speed: 400 // movement in pixels per second
+	speed: 2500 // movement in pixels per second
 };
 var monster = {
-	speed: 50
+	speed: 100
 };
 var monstersCaught = 0;
 
@@ -64,8 +64,8 @@ var reset = function () {
 	}
 
 	// Place the monster somewhere on the screen randomly
-	monster.x = 32 + (Math.random() * (canvas.width - 64));
-	monster.y = 32 + (Math.random() * (canvas.height - 64));
+	monster.x = 32 + (Math.random() * (canvas.width - 96));
+	monster.y = 32 + (Math.random() * (canvas.height - 96));
 };
 
 // Update game objects
@@ -126,7 +126,8 @@ var update = function (modifier) {
 		monster.y -= monster.speed * modifier;
 	}
 	
-	//Have hero chase monster (autonomous mode)
+	
+	//Have hero chase monster
 	if ((hero.x - monster.x) <= 0) {
 		hero.x += hero.speed * modifier;
 	}
@@ -139,6 +140,7 @@ var update = function (modifier) {
 	if ((hero.y - monster.y) > 0) {
 		hero.y -= hero.speed * modifier;
 	}
+	
 	
 	// Are they touching?
 	if (
@@ -178,7 +180,7 @@ var render = function () {
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Monsters captured: " + monstersCaught + "   Time:" + n, 32, 4);
+	ctx.fillText("Monsters captured: " + monstersCaught, 32, 4);
 };
 
 // The main game loop

@@ -11,7 +11,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.src = "images/background.png";
+bgImage.src = "http://www.joshgrib.com/projects/gpp2015/images/background.png";
 
 // Hero image
 var heroReady = false;
@@ -19,7 +19,7 @@ var heroImage = new Image();
 heroImage.onload = function () {
 	heroReady = true;
 };
-heroImage.src = "images/hero.png";
+heroImage.src = "http://www.joshgrib.com/projects/gpp2015/images/hero.png";
 
 // Monster image
 var monsterReady = false;
@@ -27,7 +27,7 @@ var monsterImage = new Image();
 monsterImage.onload = function () {
 	monsterReady = true;
 };
-monsterImage.src = "images/monster.png";
+monsterImage.src = "http://www.joshgrib.com/projects/gpp2015/images/monster.png";
 
 // Game objects
 var hero = {
